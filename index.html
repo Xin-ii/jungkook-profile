@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>田柾国(JUNGKOOK)个人简介</title>
+    <style>
+        html { 
+            background: url('123.jpg') no-repeat center fixed; 
+            background-size: cover;
+        }
+        
+        body { 
+            color: black;
+            font-family: 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(231, 231, 229, 0.9); 
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        h1::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        p.double {
+            border-style: double;
+            padding: 10px 18px;
+            margin: 25px 0 15px 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-width: 4px;
+            border-color: #666;
+            font-size: 1.2rem;
+        }
+        
+        .personal-info {
+            display: flex;
+            gap: 30px;
+            margin-top: 15px;
+            align-items: flex-start;
+        }
+        
+        .info-list {
+            flex: 1;
+        }
+        
+        .profile-image {
+            flex: 0 0 auto;
+            text-align: center;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        a {
+            color: #2575fc;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: bold;
+        }
+        
+        a:hover {
+            color: #6a11cb;
+            text-decoration: underline;
+        }
+        
+        img {
+            border: 5px solid grey;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            transition: transform 0.5s, box-shadow 0.5s;
+            object-fit: cover; /* 确保图片按比例填充容器 */
+        }
+        
+        img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        }
+        
+        h2 {
+            margin-top: 20px;
+            color: #444;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 8px;
+            font-size: 1.8rem;
+        }
+        
+        /* 个人成就部分样式 */
+        .achievement-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .works, .awards {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .works:hover, .awards:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        
+        .works h3, .awards h3 {
+            color: #6a11cb;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 8px;
+            margin-top: 0;
+            text-align: center;
+        }
+        
+        .work-item, .award-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #2575fc;
+            background-color: rgba(240, 240, 240, 0.5);
+            border-radius: 0 5px 5px 0;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        
+        .work-item:hover, .award-item:hover {
+            background-color: rgba(230, 230, 230, 0.8);
+        }
+        
+        .work-title, .award-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .work-detail, .award-detail {
+            display: none;
+            margin-top: 8px;
+            padding: 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            font-size: 0.95rem;
+        }
+        
+        /* 音频部分样式 */
+        #demo {
+            display: none;
+            margin-top: 25px;
+            animation: fadeIn 0.8s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .audio-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .audio-item {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 12px 18px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .audio-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .song-title {
+            min-width: 120px;
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1rem;
+        }
+        
+        audio {
+            flex: 1;
+            height: 45px;
+            border-radius: 25px;
+        }
+        
+        /* 音频按键样式 */
+        audio::-webkit-media-controls-panel {
+            background-color: #f0f0f0;
+        }
+        
+        button {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* 图片轮播指示器 */
+        .image-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .indicator-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ccc;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .indicator-dot.active {
+            background-color: #6a11cb;
+        }
+        
+        @media (max-width: 768px) {
+            .personal-info, .achievement-container {
+                flex-direction: column;
+            }
+            
+            .audio-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .song-title {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="fade-in"><b>田柾国(JUNGKOOK)个人简介</b></h1>
+        
+        <p class="double fade-in"><b>个人信息</b></p>
+        <div class="personal-info fade-in">
+            <div class="info-list">
+                <ul>
+                    <li>姓名：田柾国 JUNGKOOK</li>
+                    <li>毕业院校：首尔艺术高中实用音乐科</li>
+                    <li>出生信息：1997年9月1日，韩国釜山</li>
+                    <li>所属公司：HYBE(BigHit)</li>
+                    <li><a href="https://baike.so.com/doc/8398519-8718111.html">百科信息</a></li>
+                </ul>
+            </div>
+            <div class="profile-image">
+                <img src="JK1.jpg" alt="田柾国" width="180" height="230">
+                <div class="image-indicator">
+                    <div class="indicator-dot active" onclick="showImage(0)"></div>
+                    <div class="indicator-dot" onclick="showImage(1)"></div>
+                    <div class="indicator-dot" onclick="showImage(2)"></div>
+                </div>
+            </div>
+        </div>
+      
+        <p class="double fade-in"><b>演艺经历</b></p>
+        <div class="fade-in">
+            <p>田柾国，1997年9月1日出生于韩国釜山，韩国流行乐男歌手、舞者，男子演唱组合防弹少年团主唱、领舞、副rapper。</p>
+            <p>2013年6月，随组合发行首张单曲专辑《2 COOL 4 SKOOL》出道。2014年，随组合发行首张正规专辑《DARK & WILD》。2015年，随组合发行迷你专辑《花样年华pt.1》，并获得出道后首个韩国音乐节目的一位。</p>
+            <p>2018年，随组合发行第三张正规专辑《LOVE YOURSELF 转 'Tear'》，该专辑获得美国公告牌200专辑排行榜冠军。2020年，随组合发行单曲《Dynamite》，该曲获得美国公告牌百强单曲榜冠军。</p>
+        </div>
+
+        <p class="double fade-in"><b>个人成就</b></p>
+        
+        <div class="achievement-container fade-in">
+            <div class="works">
+                <h3>主要作品</h3>
+                <div class="work-item" onclick="toggleDetail(this)">
+                    <div class="work-title">《Seven》(feat. Latto)</div>
+                    <div class="work-detail">
+                        <p>发行时间：2023年7月14日</p>
+                        <p>类型：流行，R&B</p>
+                        <p>成绩：公告牌百强单曲榜第1位</p>
+                    </div>
+                </div>
+                <div class="work-item" onclick="toggleDetail(this)">
+                    <div class="work-title">《3D》(feat. Jack Harlow)</div>
+                    <div class="work-detail">
+                        <p>发行时间：2023年9月29日</p>
+                        <p>类型：流行，R&B</p>
+                        <p>成绩：公告牌百强单曲榜第5位</p>
+                    </div>
+                </div>
+                <div class="work-item" onclick="toggleDetail(this)">
+                    <div class="work-title">《Yes or No》</div>
+                    <div class="work-detail">
+                        <p>发行时间：2023年11月3日</p>
+                        <p>类型：流行</p>
+                        <p>收录于首张个人专辑《GOLDEN》</p>
+                    </div>
+                </div>
+                <div class="work-item" onclick="toggleDetail(this)">
+                    <div class="work-title">《GOLDEN》(个人专辑)</div>
+                    <div class="work-detail">
+                        <p>发行时间：2023年11月3日</p>
+                        <p>类型：流行，R&B</p>
+                        <p>成绩：公告牌200专辑榜第2位</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="awards">
+                <h3>所获奖项</h3>
+                <div class="award-item" onclick="toggleDetail(this)">
+                    <div class="award-title">Mnet亚洲音乐大奖</div>
+                    <div class="award-detail">
+                        <p>2023年 - 最佳男歌手</p>
+                        <p>2023年 - 年度歌曲《Seven》</p>
+                        <p>2023年 - 最佳合作《Seven》(with Latto)</p>
+                    </div>
+                </div>
+                <div class="award-item" onclick="toggleDetail(this)">
+                    <div class="award-title">公告牌音乐奖</div>
+                    <div class="award-detail">
+                        <p>2023年 - 全球200单曲榜《Seven》</p>
+                        <p>2023年 - 全球(excl. US)单曲榜《Seven》</p>
+                    </div>
+                </div>
+                <div class="award-item" onclick="toggleDetail(this)">
+                    <div class="award-title">Melon音乐奖</div>
+                    <div class="award-detail">
+                        <p>2023年 - 最佳男子个人舞蹈《Seven》</p>
+                        <p>2023年 - 年度歌曲《Seven》</p>
+                    </div>
+                </div>
+                <div class="award-item" onclick="toggleDetail(this)">
+                    <div class="award-title">金唱片奖</div>
+                    <div class="award-detail">
+                        <p>2024年 - 数字音源本赏《Seven》</p>
+                        <p>2024年 - 数字音源大赏《Seven》</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 音频部分 -->
+        <div id="demo" style="display:none">
+            <div class="audio-container">
+                <div class="audio-item">
+                    <span class="song-title">Seven</span>
+                    <audio controls>
+                        <source src="Jung Kook _ Latto - Seven (feat_ Latto) - Clean Ver__L.mp3" type="audio/mpeg">
+                        <source src="Jung Kook _ Latto - Seven (feat_ Latto) - Clean Ver__L.ogg" type="audio/ogg">
+                        您的浏览器不支持音频元素。
+                    </audio>
+                </div>
+                
+                <div class="audio-item">
+                    <span class="song-title">3D</span>
+                    <audio controls>
+                        <source src="Jung Kook - 3D - Alternate Ver__L.mp3" type="audio/mpeg">
+                        <source src="Jung Kook - 3D - Alternate Ver__L.ogg" type="audio/ogg">
+                        您的浏览器不支持音频元素。
+                    </audio>
+                </div>
+                
+                <div class="audio-item">
+                    <span class="song-title">Yes or No</span>
+                    <audio controls>
+                        <source src="Jung Kook - Yes or No_L.mp3" type="audio/mpeg">
+                        <source src="Jung Kook - Yes or No_L.ogg" type="audio/ogg">
+                        您的浏览器不支持音频元素。
+                    </audio>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" onclick="toggleAudio()">
+            点击展开音频作品！
+        </button>
+    </div>
+
+    <script>
+        // 页面滚动动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+        
+        // 切换音频显示/隐藏
+        function toggleAudio() {
+            const audioSection = document.getElementById('demo');
+            const button = document.querySelector('button');
+            
+            if (audioSection.style.display === 'none' || audioSection.style.display === '') {
+                audioSection.style.display = 'block';
+                button.textContent = '点击收起音频作品！';
+            } else {
+                audioSection.style.display = 'none';
+                button.textContent = '点击展开音频作品！';
+            }
+        }
+        
+        // 切换作品/奖项详情显示
+        function toggleDetail(element) {
+            const detail = element.querySelector('.work-detail, .award-detail');
+            
+            if (detail.style.display === 'none' || detail.style.display === '') {
+                detail.style.display = 'block';
+            } else {
+                detail.style.display = 'none';
+            }
+        }
+        
+        // 图片轮播效果
+        let currentImageIndex = 0;
+        const images = [
+            'JK1.jpg',
+            'JK2.jpg',
+            'JK3.jpg'
+        ];
+        
+        // 显示特定图片
+        function showImage(index) {
+            const profileImage = document.querySelector('.profile-image img');
+            const dots = document.querySelectorAll('.indicator-dot');
+            
+            currentImageIndex = index;
+            profileImage.src = images[currentImageIndex];
+            
+            // 更新指示器状态
+            dots.forEach((dot, i) => {
+                if (i === currentImageIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        // 自动轮播
+        function autoChangeImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showImage(currentImageIndex);
+        }
+        
+        // 添加点击图片切换功能
+        document.querySelector('.profile-image img').addEventListener('click', function() {
+            autoChangeImage();
+        });
+        
+        // 设置自动轮播间隔（每5秒切换一次）
+        setInterval(autoChangeImage, 5000);
+        
+        // 添加键盘快捷键
+        document.addEventListener('keydown', function(event) {
+            // 按空格键切换音频显示
+            if (event.code === 'Space') {
+                event.preventDefault();
+                toggleAudio();
+            }
+            
+            // 按ESC键收起所有详情
+            if (event.code === 'Escape') {
+                const details = document.querySelectorAll('.work-detail, .award-detail');
+                details.forEach(detail => {
+                    detail.style.display = 'none';
+                });
+            }
+            
+            // 左右箭头键切换图片
+            if (event.code === 'ArrowLeft') {
+                event.preventDefault();
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                showImage(currentImageIndex);
+            }
+            
+            if (event.code === 'ArrowRight') {
+                event.preventDefault();
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                showImage(currentImageIndex);
+            }
+        });
+    </script>
+</body>
+</html>
